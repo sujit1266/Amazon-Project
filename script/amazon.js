@@ -46,7 +46,7 @@ products.forEach((product)=>{
             Added
           </div>
 
-          <button class="add-to-cart-button button-primary">
+          <button class="add-to-cart-button button-primary" data-product-id="${product.id}">
             Add to Cart
           </button>
         </div>
@@ -65,6 +65,28 @@ let cart = JSON.parse(localStorage.getItem('cart'));
 const Element = document.querySelectorAll('.add-to-cart-button');
 Element.forEach((button, index) => {
     button.addEventListener('click', () => {
+
+      let matchingItem;
+        const productId=button.dataset.productId;
+
+        cart2.forEach((item)=>{
+          if(productId===item.productId){
+            matchingItem=item;
+          }
+        });
+
+        if(matchingItem){
+          matchingItem.quantity+=1;
+        }
+        else{
+          cart2.push({
+            productId: productId,
+            quantity: 1
+          });
+        }
+        console.log(cart2)
+
+
         cart += 1;
         document.querySelector('.cart-quantity').innerHTML = `
         ${cart}
