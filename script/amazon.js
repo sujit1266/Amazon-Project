@@ -58,12 +58,8 @@ const mainElement=document.querySelector('.products-grid');
 mainElement.innerHTML=productsHTML;
 
 
-
-
-let cart = JSON.parse(localStorage.getItem('cart'));
-
 const Element = document.querySelectorAll('.add-to-cart-button');
-Element.forEach((button, index) => {
+Element.forEach((button) => {
     button.addEventListener('click', () => {
 
       let matchingItem;
@@ -84,23 +80,18 @@ Element.forEach((button, index) => {
             quantity: 1
           });
         }
-        console.log(cart2)
 
+        // console.log(cart2);
+        
+        let cartQuantity=0;
 
-        cart += 1;
+        cart2.forEach((Item)=>{
+          cartQuantity+=Item.quantity;
+        })
+
         document.querySelector('.cart-quantity').innerHTML = `
-        ${cart}
+        ${cartQuantity}
         `;
-        localStorage.setItem('cart', JSON.stringify(cart));
-    })
-})
-document.querySelector('.cart-quantity').innerHTML = `
-        ${cart}
-        `;
-
-// Element.addEventListener('click', ()=>{
-//     cart+=1;
-//     // console.log(cart);
-//     console.log(document.querySelectorAll('.cart-quantity'));
-// })
+    });
+});
 
