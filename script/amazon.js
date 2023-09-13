@@ -62,7 +62,7 @@ mainElement.innerHTML = productsHTML;
 
 
 function updateCartQuantity(){
-  let cartQuantity = 0;
+    let cartQuantity = 0;
 
     cart2.forEach((Item) => {
       cartQuantity += Item.quantity;

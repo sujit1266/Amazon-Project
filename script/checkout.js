@@ -96,6 +96,15 @@ cart2.forEach((cartItem) => {
     `;
 });
 
+let cartQuantity = 0;
+
+    cart2.forEach((Item) => {
+      cartQuantity += Item.quantity;
+    })
+    document.querySelector('.return-to-home-link').innerHTML = `
+      ${cartQuantity}
+      `;
+
 document.querySelector('.js-order-summary').innerHTML=cartSummaryHTML;
 
 document.querySelectorAll('.js-delete-product').forEach((link)=>{
@@ -111,3 +120,4 @@ document.querySelectorAll('.js-delete-product').forEach((link)=>{
             container.remove();
         });
 });
+
